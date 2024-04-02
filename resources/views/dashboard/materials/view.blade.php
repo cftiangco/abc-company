@@ -39,22 +39,22 @@
                         <thead>
                             <tr>
                                 <th>Location</th>
+                                <th>Price</th>
                                 <th>Availability</th>
                                 <th>Status</th>
-                                <th>Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ([] as $row)
+                            @foreach ($materialLocations as $row)
                                 <tr class="hover:bg-gray-200">
-                                    <td>{{ $row->id }}</td>
-                                    <td>{{ $row->barcode }}</td>
-                                    <td>{{ $row->category }}</td>
-                                    <td>{{ $row->description }}</td>
+                                    <td>{{ $row->location }}</td>
+                                    <td>{{ $row->price }}</td>
+                                    <td>{{ $row->availability }}</td>
+                                    <td>{{ $row->status }}</td>
                                     <td class="gap-1 flex-col">
                                         <x-action-link 
-                                            link="/dashboard/materials/{{$row->id}}/edit" 
+                                            link="/dashboard/materials/{{$material->id}}/edit/{{$row->id}}/" 
                                             type="edit"/>
                                    </td>
                                 </tr>
@@ -63,9 +63,9 @@
                         <tfoot>
                             <tr>
                                 <th>Location</th>
+                                <th>Price</th>
                                 <th>Availability</th>
                                 <th>Status</th>
-                                <th>Price</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

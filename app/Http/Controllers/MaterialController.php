@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Material;
+use App\Services\MaterialService;
 
 class MaterialController extends Controller
 {
@@ -61,12 +62,17 @@ class MaterialController extends Controller
      */
     public function show(string $id)
     {
+        $materialService = new MaterialService;
+
         $material = Material::join('categories','materials.category_id','=','categories.id')
         ->where('materials.id',$id)
         ->first(['materials.*','categories.description as category']);
 
+        $materialLocations = $materialService->getMaterialsWithLocationByMaterialId($id);
+
         return view('dashboard.materials.view', [
-            'material' => $material
+            'material' => $material,
+            'materialLocations' => $materialLocations
         ]);
     }
 

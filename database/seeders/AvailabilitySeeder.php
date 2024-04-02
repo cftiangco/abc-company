@@ -4,16 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\MaterialStatus;
+use App\Models\Availability;
 
-class MaterialStatusSeeder extends Seeder
+class AvailabilitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        MaterialStatus::firstOrCreate(['description' => 'Active']);
-        MaterialStatus::firstOrCreate(['description' => 'Inactive']);
+        Availability::firstOrCreate(['description' => 'Available']);
+        Availability::firstOrCreate(['description' => 'Not Available']);
     }
 }
