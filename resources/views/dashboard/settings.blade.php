@@ -22,8 +22,23 @@
                         icon="fa-solid fa-plus"
                         label="Add Category"
                         description="Add a new Category here"
-                        link="/dashboard/category/create"
+                        link="/dashboard/categories/create"
                     />
+
+                    <x-option-item 
+                        icon="fa-solid fa-file-circle-check"
+                        label="Location"
+                        description="This will list all location"
+                        link="/dashboard/locations/list"
+                    />
+
+                    <x-option-item 
+                        icon="fa-solid fa-plus"
+                        label="Add Location"
+                        description="Add a new Location here"
+                        link="/dashboard/locations/create"
+                    />
+
 
                 </div>
                 

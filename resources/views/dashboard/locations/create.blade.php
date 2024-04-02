@@ -1,11 +1,11 @@
 @extends('layout.main')
  
-@section('title', '- Category')
+@section('title', '- Locations')
 
 @section('content')
     <x-main-container>
 
-        <x-option-container label="Add New Category">
+        <x-option-container label="Add New Location">
 
             @if ($errors->any())
                 <div class="mt-5">
@@ -21,7 +21,7 @@
                 </div>
             @endif
             
-            <x-form-container method="POST" action="/dashboard/categories/create">
+            <x-form-container method="POST" action="/dashboard/locations/create">
                 @csrf
 
                 <x-field-container>

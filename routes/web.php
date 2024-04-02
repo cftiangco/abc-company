@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MaterialLocationController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationController;
 
 
 Route::get('/', [DashboardController::class,'root']);
@@ -32,4 +33,11 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/categories/{id}/edit', [CategoryController::class,'edit']);
     Route::put('/categories/{id}/edit', [CategoryController::class,'update']);
     Route::get('/categories/{id}/view', [CategoryController::class,'show']);
+
+    Route::get('/locations/list', [LocationController::class,'list']);
+    Route::get('/locations/create', [LocationController::class,'create']);
+    Route::post('/locations/create', [LocationController::class,'store']);
+    Route::get('/locations/{id}/edit', [LocationController::class,'edit']);
+    Route::put('/locations/{id}/edit', [LocationController::class,'update']);
+    Route::get('/locations/{id}/view', [LocationController::class,'show']);
 });

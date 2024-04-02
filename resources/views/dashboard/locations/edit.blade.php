@@ -1,12 +1,11 @@
 @extends('layout.main')
  
-@section('title', '- Category')
+@section('title', '- locations')
 
 @section('content')
     <x-main-container>
 
-        <x-option-container label="Add New Category">
-
+        <x-option-container label="Edit Location">
             @if ($errors->any())
                 <div class="mt-5">
                 @foreach($errors->all() as $err)
@@ -21,11 +20,13 @@
                 </div>
             @endif
             
-            <x-form-container method="POST" action="/dashboard/categories/create">
+            <x-form-container method="POST" action="/dashboard/locations/{{$location->id}}/edit">
                 @csrf
+                @method('PUT')
+                <input type="hidden" name="id" value="{{$location->id}}">
 
                 <x-field-container>
-                    <x-text-box label="Description" value="{{ old('description') }}" placeHolder="Description" name="description" type="text"/>
+                    <x-text-box label="Description" value="{{ $location->description }}" placeHolder="Description" name="description" type="text"/>
                 </x-field-container>
                 
                 <x-reg-submit-button 
