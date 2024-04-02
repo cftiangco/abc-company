@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Material;
 
 class MaterialController extends Controller
 {
@@ -17,7 +18,9 @@ class MaterialController extends Controller
 
     public function list()
     {
-        return view('dashboard.materials.list');
+        $materials = Material::join('categories','materials.category_id','=','categories.id')
+            ->get(['materials.*','categories.description as category']);
+        return view('dashboard.materials.list', compact('materials'));
     }
 
     /**
@@ -37,7 +40,20 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+
+        $request->validate([
+            'barcode' => ['required'],
+            'description' => ['required'],
+            'category_id' => ['required'],
+        ]);
+
+        $model = new Material;
+        $model->barcode = $request->barcode;
+        $model->description = $request->description;
+        $model->category_id = $request->category_id;
+
+        $model->save();
+        return redirect("/dashboard/materials/list")->withSuccess('Record has been successfully saved');
     }
 
     /**

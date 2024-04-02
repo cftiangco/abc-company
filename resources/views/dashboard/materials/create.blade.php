@@ -30,7 +30,7 @@
                 
                 <x-field-container>
 
-                    <x-dropdown label="Category" name="category__id">
+                    <x-dropdown label="Category" name="category_id">
                         @foreach($categories as $row)
                             <x-dropdown-option label="{{$row->description}}" value="{{$row->id}}"/>
                         @endforeach
