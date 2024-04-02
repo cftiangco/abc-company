@@ -1,6 +1,6 @@
 @extends('layout.main')
  
-@section('title', '- Booking')
+@section('title', '- Dashboard')
 
 
 @section('content')

@@ -12,10 +12,6 @@ class MaterialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('dashboard.materials.index');
-    }
 
     public function list()
     {

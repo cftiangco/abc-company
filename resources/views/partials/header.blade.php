@@ -1,4 +1,4 @@
-<header class="bg-slate-800 w-full h-24">
+<header class="bg-slate-800 w-full h-16">
     <div class="flex items-center justify-between h-full">
         <div class="text-white">
             <h1 class="ml-5 text-slate-100 font-bold text-lg">ABC Company</h1>

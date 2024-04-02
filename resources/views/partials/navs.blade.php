@@ -2,19 +2,19 @@
 
     <x-sidebar-link 
       label='Dashboard'
-      icon="fa-solid fa-chart-line"
+      icon="fa-solid fa-chart-bar"
       link="/dashboard" 
     />
 
     <x-sidebar-link 
       label='Materials'
-      icon="fa-solid fa-chart-line"
+      icon="fa-solid fa-clipboard"
       link="/dashboard/materials" 
     />
 
     <x-sidebar-link 
       label='Setting'
-      icon="fa-solid fa-chart-line"
+      icon="fa-solid fa-gears"
       link="/dashboard/settings" 
     />
 

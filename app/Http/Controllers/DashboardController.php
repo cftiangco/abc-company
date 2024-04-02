@@ -9,9 +9,24 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function root()
     {
-        return view('dashboard.index');
+        return redirect('/dashboard');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard.dashboard');
+    }
+
+    public function materials()
+    {
+        return view('dashboard.materials');
+    }
+
+    public function settings()
+    {
+        return view('dashboard.settings');
     }
 
     /**

@@ -4,11 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MaterialLocationController;
+use App\Http\Controllers\CategoryController;
+
+
+Route::get('/', [DashboardController::class,'root']);
 
 Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('/', [DashboardController::class,'index']);
+    Route::get('/', [DashboardController::class,'dashboard']);
+    Route::get('/materials', [DashboardController::class,'materials']);
+    Route::get('/settings', [DashboardController::class,'settings']);
 
-    Route::get('/materials', [MaterialController::class,'index']);
     Route::get('/materials/list', [MaterialController::class,'list']);
     Route::get('/materials/create', [MaterialController::class,'create']);
     Route::post('/materials/create', [MaterialController::class,'store']);
@@ -20,4 +25,11 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::post('/materials/{id}/add-to-location', [MaterialLocationController::class,'store']);
     Route::get('/materials/{id}/edit/{materialLocationId}', [MaterialLocationController::class,'edit']);
     Route::put('/materials/{id}/edit/{materialLocationId}', [MaterialLocationController::class,'update']);
+
+    Route::get('/categories/list', [CategoryController::class,'list']);
+    Route::get('/categories/create', [CategoryController::class,'create']);
+    Route::post('/categories/create', [CategoryController::class,'store']);
+    Route::get('/categories/{id}/edit', [CategoryController::class,'edit']);
+    Route::put('/categories/{id}/edit', [CategoryController::class,'update']);
+    Route::get('/categories/{id}/view', [CategoryController::class,'show']);
 });
