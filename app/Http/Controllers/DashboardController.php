@@ -36,6 +36,11 @@ class DashboardController extends Controller
         return view('dashboard.settings');
     }
 
+    public function users()
+    {
+        return view('dashboard.users');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

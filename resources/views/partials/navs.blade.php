@@ -13,9 +13,15 @@
     />
 
     <x-sidebar-link 
-      label='Setting'
+      label='Settings'
       icon="fa-solid fa-gears"
       link="/dashboard/settings" 
+    />
+
+    <x-sidebar-link 
+    label='Users'
+      icon="fa-solid fa-users-gear"
+      link="/dashboard/users" 
     />
 
 </ul>

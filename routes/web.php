@@ -6,6 +6,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MaterialLocationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', [DashboardController::class,'root']);
@@ -14,6 +15,7 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/', [DashboardController::class,'dashboard']);
     Route::get('/materials', [DashboardController::class,'materials']);
     Route::get('/settings', [DashboardController::class,'settings']);
+    Route::get('/users', [DashboardController::class,'users']);
 
     Route::get('/materials/list', [MaterialController::class,'list']);
     Route::get('/materials/create', [MaterialController::class,'create']);
@@ -40,4 +42,10 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/locations/{id}/edit', [LocationController::class,'edit']);
     Route::put('/locations/{id}/edit', [LocationController::class,'update']);
     Route::get('/locations/{id}/view', [LocationController::class,'show']);
+
+    Route::get('/users/list', [UserController::class,'list']);
+    Route::get('/users/create', [UserController::class,'create']);
+    Route::post('/users/create', [UserController::class,'store']);
+    Route::get('/users/{id}/edit', [UserController::class,'edit']);
+    Route::put('/users/{id}/edit', [UserController::class,'update']);
 });
