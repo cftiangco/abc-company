@@ -3,9 +3,6 @@
     'linkButtonLocation' => '',
     'linkButtonLabel' => '',
     'label' => '',
-    'actionButtonShow' => false,
-    'actionButtonId' => '',
-    'actionButtonLabel' => '',
 ])
 
 <div class="h-full w-full border-b-1 mb-10">
@@ -17,14 +14,6 @@
                 :label="$linkButtonLabel"
                 :location="$linkButtonLocation"
             />
-        @endif
-
-        @if($actionButtonShow)
-            <div class="me-4">
-                <button id="{{$actionButtonId}}" class="text-white bg-black py-1 px-4 rounded shadow font-bold hover:bg-gray-500">
-                    {{$actionButtonLabel}}
-                </button>
-            </div>
         @endif
     </div>
 

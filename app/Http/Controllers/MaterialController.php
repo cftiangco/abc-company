@@ -61,7 +61,13 @@ class MaterialController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $material = Material::join('categories','materials.category_id','=','categories.id')
+        ->where('materials.id',$id)
+        ->first(['materials.*','categories.description as category']);
+
+        return view('dashboard.materials.view', [
+            'material' => $material
+        ]);
     }
 
     /**
@@ -69,7 +75,13 @@ class MaterialController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $material = Material::find($id);
+        $categories = Category::all();
+
+        return view('dashboard.materials.edit', [
+            'categories' => $categories,
+            'material' => $material
+        ]);
     }
 
     /**
@@ -77,7 +89,19 @@ class MaterialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'barcode' => ['required'],
+            'description' => ['required'],
+            'category_id' => ['required'],
+        ]);
+
+        $model =  Material::find($id);
+        $model->barcode = $request->barcode;
+        $model->description = $request->description;
+        $model->category_id = $request->category_id;
+        $model->update();
+
+        return redirect("/dashboard/materials/list")->withSuccess('Record has been successfully updated');
     }
 
     /**
