@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Material;
+use App\Models\Location;
+use App\Models\Category;
 
 class DashboardController extends Controller
 {
@@ -16,7 +19,11 @@ class DashboardController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard.dashboard');
+        return view('dashboard.dashboard', [
+            'materials' => Material::count(),
+            'locations' => Location::count(),
+            'categories' => Category::count(),
+        ]);
     }
 
     public function materials()
