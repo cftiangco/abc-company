@@ -10,7 +10,34 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
      */
+
+    public function loginUI()
+    {
+        $users = User::all();
+        return view('login');
+    }
+
+    public function login(Request $request) {
+        $request->validate([
+            'email' => ['required'],
+            'pword' => ['required'],
+        ],['pword.required' => 'The password field is required.']);
+
+        $user = User::where('email',$request->email)
+        ->where('user_status_id',1)
+        ->first();
+
+        if(!$user || !Hash::check($request->pword,$user->pword)) {
+            return redirect()->back()->withInput()->with('fail','Invalid Email or Password, Please try again.');
+        }
+    
+        $request->session()->put('user', $user);
+        return redirect('/dashboard');
+    }
+
+
     public function list()
     {
         $users = User::all();
@@ -47,6 +74,12 @@ class UserController extends Controller
         $model->pword = Hash::make($request->email);
         $model->save();
         return redirect("/dashboard/users/list")->withSuccess('Record has been successfully saved');
+    }
+
+    public function logout(Request $request) {
+        $request->session()->forget('user');
+        $request->session()->flush();
+        return redirect()->route('login');
     }
 
     /**

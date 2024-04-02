@@ -9,9 +9,19 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\UserController;
 
 
-Route::get('/', [DashboardController::class,'root']);
 
-Route::group(['prefix' => 'dashboard'], function () {
+
+Route::middleware(['dashboard.no.auth'])->group(function () {
+    Route::get('/', [UserController::class,'loginUI']);
+    Route::get('/login', [UserController::class,'loginUI'])->name('login');
+    Route::post('/login', [UserController::class,'login']);
+});
+
+Route::get('/logout', [UserController::class,'logout']);
+
+Route::group(['prefix' => 'dashboard','middleware' => 'dashboard.auth'], function () {
+
+
     Route::get('/', [DashboardController::class,'dashboard']);
     Route::get('/materials', [DashboardController::class,'materials']);
     Route::get('/settings', [DashboardController::class,'settings']);
