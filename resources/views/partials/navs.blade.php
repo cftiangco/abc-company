@@ -9,13 +9,13 @@
     <x-sidebar-link 
       label='Materials'
       icon="fa-solid fa-chart-line"
-      link="/dashboard" 
+      link="/dashboard/materials" 
     />
 
     <x-sidebar-link 
       label='Setting'
       icon="fa-solid fa-chart-line"
-      link="/dashboard" 
+      link="/dashboard/settings" 
     />
 
 </ul>
