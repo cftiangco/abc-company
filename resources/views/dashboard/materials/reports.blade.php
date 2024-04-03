@@ -119,6 +119,9 @@
 
 @section('modal')
     <x-modal-container id="modal" additionalClass="hidden">
+        <div class="flex mb-3 justify-end">
+            <button class="font-bold text-white bg-slate-800 px-2 py-1 rounded" id="btn-close">Close</button>
+        </div>
         <div class="w-full overflow-y-auto md:overflow-y-visible">
             <table id="data-table-2" class="display" style="width:100%">
                 <thead>
@@ -168,6 +171,11 @@
 
             $("#lookup").click(function() {
                 $("#modal").removeClass("hidden");
+            });
+
+            $("#btn-close").click(function() {
+                $("#modal").removeClass("block");
+                $("#modal").addClass("hidden");
             });
 
             $("#table-body").on("click", ".selected", function() {
