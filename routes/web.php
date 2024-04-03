@@ -33,6 +33,7 @@ Route::group(['prefix' => 'dashboard','middleware' => 'dashboard.auth'], functio
     Route::get('/materials/{id}/edit', [MaterialController::class,'edit']);
     Route::put('/materials/{id}/edit', [MaterialController::class,'update']);
     Route::get('/materials/{id}/view', [MaterialController::class,'show']);
+    Route::get('/materials/reports', [MaterialController::class,'reports']);
 
     Route::get('/materials/{id}/add-to-location', [MaterialLocationController::class,'create']);
     Route::post('/materials/{id}/add-to-location', [MaterialLocationController::class,'store']);

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Material;
 use App\Services\MaterialService;
+use App\Models\MaterialStatus;
+use App\Models\Availability;
+use App\Models\Location;
 
 class MaterialController extends Controller
 {
@@ -104,6 +107,16 @@ class MaterialController extends Controller
         $model->update();
 
         return redirect("/dashboard/materials/list")->withSuccess('Record has been successfully updated');
+    }
+
+    public function reports()
+    {
+        $locations = Location::all();
+        $status = MaterialStatus::all();
+        return view('dashboard.materials.reports', [
+            'locations' => $locations,
+            'status' => $status
+        ]);
     }
 
     /**

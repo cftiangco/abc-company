@@ -25,6 +25,13 @@
                         link="/dashboard/materials/create"
                     />
 
+                    <x-option-item 
+                        icon="fa-solid fa-file"
+                        label="Generate Report"
+                        description="Report generation"
+                        link="/dashboard/materials/reports"
+                    />
+
                 </div>
                 
             </x-admin-container>
