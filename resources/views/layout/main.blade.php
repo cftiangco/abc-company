@@ -10,6 +10,7 @@
 </head>
 <body class="">
 
+      @yield('modal')
       
       @include('partials.header')
 
@@ -31,6 +32,7 @@
       <script src="{{ asset('js/tailwind.min.js') }}"></script>
       <script>	
         new DataTable('#data-table');
+        new DataTable('#data-table-2');
       </script>
 
       @yield('js')

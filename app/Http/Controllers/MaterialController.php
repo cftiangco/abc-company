@@ -18,8 +18,8 @@ class MaterialController extends Controller
 
     public function list()
     {
-        $materials = Material::join('categories','materials.category_id','=','categories.id')
-            ->get(['materials.*','categories.description as category']);
+        $materialService = new MaterialService;
+        $materials = $materialService->getMaterials();
         return view('dashboard.materials.list', compact('materials'));
     }
 
@@ -109,13 +109,25 @@ class MaterialController extends Controller
         return redirect("/dashboard/materials/list")->withSuccess('Record has been successfully updated');
     }
 
-    public function reports()
+    public function reports(Request $request)
     {
+        $materialService = new MaterialService;
+        $materials = $materialService->getMaterials();
+
         $locations = Location::all();
         $status = MaterialStatus::all();
+
+        $report = [];
+
+        if($request->material_id) {
+            $report = $materialService->getReport($request->material_id,$request->location_id,$request->material_status_id);
+        }
+
         return view('dashboard.materials.reports', [
             'locations' => $locations,
-            'status' => $status
+            'status' => $status,
+            'materials' => $materials,
+            'report' => $report ?? []
         ]);
     }
 
