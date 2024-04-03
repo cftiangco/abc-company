@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {},
   },
-  darkMode: false,
+  darkMode: 'class',
   plugins: [],
 }
 
