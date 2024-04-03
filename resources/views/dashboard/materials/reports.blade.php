@@ -20,9 +20,10 @@
                     <p class="text-green-500">{!! Session::get('success') !!}</p>
                 </div>
             @endif
+            
             <x-form-container method="GET" action="#">
                 @csrf
-                <div class="flex items-center gap-3">
+                <div class="flex flex-col md:flex-row items-center gap-3">
 
                 <input 
                     type="hidden" 
@@ -31,7 +32,6 @@
                     value="{{ request()->query('material_id') ?? ''}}"  
                     required>
 
-                <div>
                     <div class="flex items-center">
                             <x-text-box 
                                 label="Material" 
@@ -43,7 +43,7 @@
                                 value="{{ request()->query('material_description') ?? ''}}" 
                                 type="text"/>
                     </div>
-                </div>
+
 
                     <x-dropdown-sm label="Status" name="material_status_id">
                         @foreach($status as $row)

@@ -18,10 +18,18 @@
       link="/dashboard/settings" 
     />
 
+    @if(session()->get('user')->user_role_id == 1)
+      <x-sidebar-link 
+        label='Users'
+        icon="fa-solid fa-users-gear"
+        link="/dashboard/users" 
+      />
+    @endif
+
     <x-sidebar-link 
-    label='Users'
-      icon="fa-solid fa-users-gear"
-      link="/dashboard/users" 
+      label='Logout'
+      icon="fa-solid fa-right-from-bracket"
+      link="/logout" 
     />
 
 </ul>

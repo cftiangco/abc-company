@@ -53,9 +53,13 @@
                                     <td>{{ $row->availability }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td class="gap-1 flex-col">
-                                        <x-action-link 
-                                            link="/dashboard/materials/{{$material->id}}/edit/{{$row->id}}/" 
-                                            type="edit"/>
+                                        @if(session()->get('user')->user_role_id == 1)
+                                            <x-action-link 
+                                                link="/dashboard/materials/{{$material->id}}/edit/{{$row->id}}/" 
+                                                type="edit"/>
+                                        @else
+                                            <p class="text-slate-400">Edit</p>
+                                        @endif
                                    </td>
                                 </tr>
                             @endforeach
