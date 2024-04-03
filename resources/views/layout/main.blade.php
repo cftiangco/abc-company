@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ asset('fontawesome-free-6.4.2/css/all.min.css') }}">
   <link rel="icon" type="image/x-icon" href="{{ asset('images/iconn.png') }}">
   <title>ABC Company @yield('title')</title>
-  @vite('resources/css/app.css')
+  <link rel="stylesheet" href="{{ asset('build/assets/app-sk0mS2Z4.css') }}" />
 </head>
 <body class="">
 
