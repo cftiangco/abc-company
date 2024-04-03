@@ -1,6 +1,6 @@
 @extends('layout.main')
  
-@section('title', '- Products')
+@section('title', '- Add material to location')
 
 @section('content')
     <x-main-container>

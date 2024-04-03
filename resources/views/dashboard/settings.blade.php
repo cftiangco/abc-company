@@ -9,7 +9,7 @@
             
             <x-admin-container>
 
-                <div class="grid grid-cols-2 gap-x-1 gap-y-2 md:gap-x-10 md:gap-y-5">
+                <x-menu-container>
                    
                     <x-option-item 
                         icon="fa-solid fa-file-circle-check"
@@ -40,7 +40,7 @@
                     />
 
 
-                </div>
+                </x-menu-container>
                 
             </x-admin-container>
             

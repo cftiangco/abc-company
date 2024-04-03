@@ -3,8 +3,8 @@
         <div class="text-white">
            <div class="ms-5">
                 <a href="/dashboard" class="flex items-center gap-3 justify-center">
-                    <img src="{{ asset('images/iconn.png') }}" alt="Main Logo" class="w-12 hidden md:block">
-                    <h1 class="font-bold tracking-wide text-gray-200">ABC Company</h1>
+                    <img src="{{ asset('images/iconn.png') }}" alt="Main Logo" class="w-8 md:w-12 block">
+                    <h1 class="font-bold tracking-wide text-gray-200 hidden md:block">ABC Company</h1>
                 </a>
            </div>
         </div>
