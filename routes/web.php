@@ -7,6 +7,7 @@ use App\Http\Controllers\MaterialLocationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 
 
 
@@ -18,6 +19,10 @@ Route::middleware(['dashboard.no.auth'])->group(function () {
 });
 
 Route::get('/logout', [UserController::class,'logout']);
+
+Route::group(['prefix' => 'report','middleware' => 'dashboard.auth'], function () {
+    Route::get('/excel', [ReportController::class,'excel'])->name('report.excel');
+});
 
 Route::group(['prefix' => 'dashboard','middleware' => 'dashboard.auth'], function () {
 

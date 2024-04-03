@@ -120,7 +120,7 @@ class MaterialController extends Controller
         $report = [];
 
         if($request->material_id) {
-            $report = $materialService->getReport($request->material_id,$request->location_id,$request->material_status_id);
+            $report = $materialService->getReport($request->material_id,$request->material_status_id);
         }
 
         return view('dashboard.materials.reports', [

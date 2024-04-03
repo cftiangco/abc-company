@@ -44,16 +44,6 @@
                                 type="text"/>
                     </div>
                 </div>
-                
-                <x-dropdown-sm label="Location" name="location_id">
-                        @foreach($locations as $row)
-                            <x-dropdown-option 
-                                label="{{$row->description}}" 
-                                value="{{$row->id}}"
-                                :isSelected="request()->query('location_id') == $row->id ? 'selected':''" 
-                            />
-                        @endforeach
-                    </x-dropdown>
 
                     <x-dropdown-sm label="Status" name="material_status_id">
                         @foreach($status as $row)
@@ -75,10 +65,16 @@
 
             @if(count($report) > 0)
                 <br/><br/>
+                <div class="flex justify-end gap-3">
+                    <a class="text-green-500 font-bold mb-3" href="/report/excel?material_id={{request()->query('material_id')}}&location_id={{request()->query('location_id')}}&material_status_id={{request()->query('material_status_id')}}">
+                        Export to Spreadsheet
+                    </a>
+                </div>
                 <div class="w-full overflow-y-auto md:overflow-y-visible">
                     <table id="data-table" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Description</th>
                                 <th>Category</th>
                                 <th>Price</th>
@@ -89,6 +85,7 @@
                         <tbody>
                             @foreach ($report as $row)
                                 <tr class="hover:bg-gray-200">
+                                    <td>{{ $row->id }}</td>
                                     <td>{{ $row->description }}</td>
                                     <td>{{ $row->category }}</td>
                                     <td>{{ $row->price }}</td>
@@ -99,7 +96,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Description</th>
+                                <th>ID</th>
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Location</th>
@@ -126,7 +123,7 @@
             <table id="data-table-2" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Product ID</th>
+                        <th>ID</th>
                         <th>Barcode</th>
                         <th>Category</th>
                         <th>Description</th>
@@ -142,7 +139,7 @@
                             <td>{{ $row->description }}</td>
                             <td class="gap-1 flex-col">
                                 <button 
-                                    class="selected" 
+                                    class="selected font-bold text-white bg-slate-800 px-2 py-1 rounded" 
                                     data-id="{{$row->id}}"
                                     data-description="{{$row->description}}"
                                 >Select</button>
