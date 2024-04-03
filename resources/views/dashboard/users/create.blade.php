@@ -30,15 +30,17 @@
                 </x-field-container>
 
                 <x-field-container>
-                   
-                    <x-dropdown label="User role" name="user_role_id">
-                        <x-dropdown-option label="Admin" value="1"/>
-                        <x-dropdown-option label="User" value="2"/>
+
+                    <x-dropdown label="User Role" name="user_role_id">
+                        @foreach($roles as $row)
+                            <x-dropdown-option label="{{$row->description}}" value="{{$row->id}}"/>
+                        @endforeach
                     </x-dropdown>
 
                     <x-dropdown label="User Status" name="user_status_id">
-                        <x-dropdown-option label="Active" value="1"/>
-                        <x-dropdown-option label="Inactive" value="2"/>
+                        @foreach($status as $row)
+                            <x-dropdown-option label="{{$row->description}}" value="{{$row->id}}"/>
+                        @endforeach
                     </x-dropdown>
 
                 </x-field-container>

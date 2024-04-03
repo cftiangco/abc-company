@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\UserRole;
+use App\Models\UserStatus;
 
 class UserController extends Controller
 {
@@ -49,7 +51,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.create');
+        $roles = UserRole::all();
+        $status = UserStatus::all();
+        return view('dashboard.users.create', [
+            'roles' => $roles,
+            'status' => $status,
+        ]);
     }
     
 
